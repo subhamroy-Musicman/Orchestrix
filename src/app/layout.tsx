@@ -17,8 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://automateai.vercel.app"),
-  title: "AutomateAI — Next-Gen AI Data Automation Platform",
+  metadataBase: new URL("https://orchestrix.vercel.app"),
+  title: "Orchestrix — Next-Gen AI Data Automation Platform",
   description:
     "Transform your data workflows with AI-powered automation. Process, analyze, and automate at scale with enterprise-grade reliability. Trusted by 2,000+ teams.",
   keywords: [
@@ -31,15 +31,15 @@ export const metadata: Metadata = {
     "machine learning",
     "data processing",
   ],
-  authors: [{ name: "AutomateAI" }],
-  creator: "AutomateAI",
-  publisher: "AutomateAI",
+  authors: [{ name: "Orchestrix" }],
+  creator: "Orchestrix",
+  publisher: "Orchestrix",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://automateai.vercel.app",
-    siteName: "AutomateAI",
-    title: "AutomateAI — Next-Gen AI Data Automation Platform",
+    siteName: "Orchestrix",
+    title: "Orchestrix — Next-Gen AI Data Automation Platform",
     description:
       "Transform your data workflows with AI-powered automation. Process, analyze, and automate at scale with enterprise-grade reliability.",
     images: [
@@ -47,18 +47,18 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AutomateAI — AI Data Automation Platform",
+        alt: "Orchestrix — AI Data Automation Platform",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AutomateAI — Next-Gen AI Data Automation Platform",
+    title: "Orchestrix — Next-Gen AI Data Automation Platform",
     description:
       "Transform your data workflows with AI-powered automation. Process, analyze, and automate at scale.",
     images: ["/og-image.png"],
-    creator: "@automateai",
+    creator: "@orchestrix",
   },
   robots: {
     index: true,
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://automateai.vercel.app",
+    canonical: "https://orchestrix.vercel.app",
   },
 };
 

@@ -9,7 +9,7 @@ export interface Testimonial {
 export const TESTIMONIALS: readonly Testimonial[] = [
   {
     id: 'testimonial-1',
-    quote: 'AutomateAI cut our data processing time by 85%. What used to take our team days now happens in minutes — automatically.',
+    quote: 'Orchestrix cut our data processing time by 85%. What used to take our team days now happens in minutes — automatically.',
     author: 'Sarah Chen',
     role: 'VP of Engineering',
     company: 'TechFlow Inc.',
@@ -23,7 +23,7 @@ export const TESTIMONIALS: readonly Testimonial[] = [
   },
   {
     id: 'testimonial-3',
-    quote: 'Enterprise-grade security with startup-level simplicity. AutomateAI is the only platform that met all our compliance requirements.',
+    quote: 'Enterprise-grade security with startup-level simplicity. Orchestrix is the only platform that met all our compliance requirements.',
     author: 'Priya Patel',
     role: 'CTO',
     company: 'FinSecure Global',

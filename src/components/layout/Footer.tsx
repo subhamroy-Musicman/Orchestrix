@@ -12,10 +12,10 @@ export function Footer() {
             <Link 
               href="/" 
               className="flex items-center gap-3 group relative z-[60] mb-6 inline-flex" 
-              aria-label="AutomateAI Home"
+              aria-label="Orchestrix Home"
             >
               <span className="font-sans font-bold text-lg tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-arctic/80 group-hover:to-arctic transition-colors">
-                AutomateAI
+                Orchestrix
               </span>
             </Link>
             <p className="text-mint/70 text-sm max-w-xs leading-relaxed">
@@ -40,7 +40,7 @@ export function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-mint/50">
-          <p>© {new Date().getFullYear()} AutomateAI. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Orchestrix. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors duration-300">Terms of Service</a>

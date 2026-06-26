@@ -227,7 +227,7 @@ export function HeroSection() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-forsythia opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-forsythia shadow-[0_0_8px_rgba(255,200,1,0.8)]"></span>
                 </span>
-                AutomateAI 2.0 is now live
+                Orchestrix 2.0 is now live
               </div>
               
               <h1 id="hero-heading" className="text-white font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-[-0.02em]">

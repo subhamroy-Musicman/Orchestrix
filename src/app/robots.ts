@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://automateai.vercel.app/sitemap.xml',
+    sitemap: 'https://orchestrix.vercel.app/sitemap.xml',
   };
 }

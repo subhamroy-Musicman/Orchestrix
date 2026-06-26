@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 export const runtime = 'edge';
  
 // Image metadata
-export const alt = 'AutomateAI — Next-Gen AI Data Automation Platform';
+export const alt = 'Orchestrix — Next-Gen AI Data Automation Platform';
 export const size = {
   width: 1200,
   height: 630,
@@ -44,7 +44,7 @@ export default async function Image() {
               fill="#FFC801"
             />
           </svg>
-          <span style={{ fontSize: 72, fontWeight: 700, color: '#FFC801' }}>AutomateAI</span>
+          <span style={{ fontSize: 72, fontWeight: 700, color: '#FFC801' }}>Orchestrix</span>
         </div>
         <div style={{ fontSize: 48, textAlign: 'center', maxWidth: '900px' }}>
           Next-Gen AI Data Automation Platform

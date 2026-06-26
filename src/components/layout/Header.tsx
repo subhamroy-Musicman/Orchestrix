@@ -108,7 +108,7 @@ export function Header() {
           <Link 
             href="/" 
             className="flex items-center gap-3 group relative z-[60]" 
-            aria-label="AutomateAI Home"
+            aria-label="Orchestrix Home"
             onClick={() => setIsMenuOpen(false)}
           >
             <div className="relative flex items-center justify-center w-7 h-7">
@@ -120,7 +120,7 @@ export function Header() {
               </div>
             </div>
             <span className="font-sans font-bold text-xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-arctic/80 group-hover:to-arctic transition-colors">
-              AutomateAI
+              Orchestrix
             </span>
           </Link>
 
