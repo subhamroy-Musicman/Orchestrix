@@ -1,91 +1,45 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { FEATURES } from '@/lib/content/features';
+import { Card, CardHeader, CardIcon, CardTitle, CardBody } from '../ui/Card';
 import { Icon } from '../ui/Icon';
 import { cn } from '@/lib/utils/cn';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
-
-// Desktop Bento Grid configuration (3 columns x 4 rows)
-const BENTO_CLASSES = [
-  "md:col-span-2 md:row-span-2 bg-gradient-to-br from-noir to-expedition/30", 
-  "md:col-span-1 md:row-span-1 bg-gradient-to-bl from-noir to-forsythia/10", 
-  "md:col-span-1 md:row-span-1 bg-gradient-to-tr from-noir to-mint/10", 
-  "md:col-span-1 md:row-span-2 bg-gradient-to-b from-noir to-expedition/40", 
-  "md:col-span-2 md:row-span-1 bg-gradient-to-r from-noir to-black", 
-  "md:col-span-2 md:row-span-1 bg-gradient-to-tl from-noir to-forsythia/5", 
-];
 
 export function InteractiveFeatures() {
-  const isDesktop = useMediaQuery('(min-width: 768px)');
-  
-  // State for mobile accordion. We use a ref to persist the active state across breakpoints
-  const activeFeatureRef = useRef<string | null>(FEATURES[0].id);
-  const [activeAccordionId, setActiveAccordionId] = useState<string | null>(activeFeatureRef.current);
+  // State for mobile accordion
+  const [activeAccordionId, setActiveAccordionId] = useState<string | null>(FEATURES[0].id);
 
-  // Sync state when changed
-  useEffect(() => {
-    activeFeatureRef.current = activeAccordionId;
-  }, [activeAccordionId]);
 
   return (
     <div className="w-full relative z-20">
       
-      {/* 
-        We render both layouts but visually hide them based on breakpoints.
-        This avoids React hydration mismatches and layout thrashing.
-      */}
-
-      {/* DESKTOP BENTO GRID */}
-      <div className="hidden md:grid grid-cols-3 auto-rows-[280px] gap-6 lg:gap-8">
-        {FEATURES.map((feature, i) => (
-          <div 
-            key={feature.id}
-            className={cn(
-              "group relative rounded-3xl overflow-hidden border border-white/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl",
-              BENTO_CLASSES[i] || "md:col-span-1 md:row-span-1"
-            )}
-            onMouseEnter={() => setActiveAccordionId(feature.id)}
-          >
-            {/* Hover Gradient Lighting */}
-            <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-forsythia/30 via-transparent to-mint/30 rounded-3xl z-0" />
-            <div className="absolute inset-[1px] bg-noir rounded-[calc(1.5rem-1px)] z-0" />
-            
-            {/* Radial glow on hover */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-forsythia/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-0 pointer-events-none" />
-
-            <div className="relative z-10 p-8 h-full flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-6 group-hover:bg-forsythia/10 group-hover:text-forsythia group-hover:border-forsythia/20 transition-all duration-300">
-                  <Icon name={feature.icon} size="lg" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">{feature.title}</h3>
-                <p className="text-mint/70 text-base leading-relaxed pr-4">{feature.description}</p>
+      {/* DESKTOP GRID */}
+      <div className="hidden md:grid grid-cols-1 lg:grid-cols-12 auto-rows-fr grid-flow-dense gap-[var(--card-gap)]">
+        {FEATURES.map((feature, i) => {
+          const spanClass = (i % 3 === 0) ? "lg:col-span-8" : "lg:col-span-4";
+          
+          return (
+            <Card 
+              key={feature.id}
+              className={spanClass}
+              onMouseEnter={() => setActiveAccordionId(feature.id)}
+            >
+              <CardHeader>
+                <CardIcon name={feature.icon} />
+                <CardTitle>{feature.title}</CardTitle>
+              </CardHeader>
+              <CardBody>
+                {feature.description}
+              </CardBody>
+              
+              {/* Decorative pseudo-visualizations */}
+              <div className="mt-8 relative h-16 w-full opacity-50 group-hover:opacity-100 transition-opacity flex-shrink-0">
+                <div className="absolute bottom-0 right-0 w-24 h-24 bg-[radial-gradient(ellipse_at_bottom_right,_var(--color-forsythia)_0%,_transparent_70%)] opacity-20 group-hover:opacity-50 transition-opacity" />
               </div>
-
-              {/* Decorative pseudo-visualizations per card based on size */}
-              <div className="mt-8 relative h-16 w-full opacity-50 group-hover:opacity-100 transition-opacity">
-                {i === 0 && (
-                  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-forsythia/20 to-transparent rounded-t-xl overflow-hidden border-t border-forsythia/30 flex items-end justify-between px-4 pb-2">
-                    {[40, 70, 50, 90, 65, 100].map((h, j) => (
-                      <div key={j} className="w-4 bg-forsythia/40 rounded-t-sm transition-all duration-500 group-hover:bg-forsythia" style={{ height: `${h}%` }} />
-                    ))}
-                  </div>
-                )}
-                {i === 3 && (
-                  <div className="absolute inset-0 flex flex-col gap-2">
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div className="w-3/4 h-full bg-mint" /></div>
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div className="w-1/2 h-full bg-forsythia" /></div>
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div className="w-5/6 h-full bg-arctic" /></div>
-                  </div>
-                )}
-                {i !== 0 && i !== 3 && (
-                   <div className="absolute bottom-0 right-0 w-24 h-24 bg-[radial-gradient(ellipse_at_bottom_right,_var(--color-forsythia)_0%,_transparent_70%)] opacity-20 group-hover:opacity-50 transition-opacity" />
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
+            </Card>
+          );
+        })}
       </div>
 
       {/* MOBILE ACCORDION */}
@@ -113,7 +67,7 @@ export function InteractiveFeatures() {
                   )}>
                     <Icon name={feature.icon} size="md" />
                   </div>
-                  <h3 className="font-bold text-lg text-white">{feature.title}</h3>
+                  <h3 className="card-title text-white">{feature.title}</h3>
                 </div>
                 <Icon 
                   name="chevron-down" 
@@ -129,7 +83,7 @@ export function InteractiveFeatures() {
                   isActive ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"
                 )}
               >
-                <div className="p-5 pt-0 text-mint/70 text-sm leading-relaxed">
+                <div className="p-5 pt-0 card-description text-mint/70">
                   {feature.description}
                   
                   {/* Small decorative element for mobile */}

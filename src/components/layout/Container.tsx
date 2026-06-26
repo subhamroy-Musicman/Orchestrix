@@ -10,7 +10,7 @@ interface ContainerProps {
 export function Container({ children, className, as: Tag = 'div' }: ContainerProps) {
   return (
     <Tag 
-      className={cn('w-full max-w-7xl mx-auto px-6 lg:px-8 xl:px-10', className)}
+      className={cn('w-full max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12', className)}
       suppressHydrationWarning
     >
       {children}

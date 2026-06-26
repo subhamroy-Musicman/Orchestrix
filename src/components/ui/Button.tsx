@@ -35,13 +35,13 @@ const variantStyles: Record<ButtonVariant, string> = {
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-5 py-2.5 text-sm font-medium tracking-wide',
-  lg: 'px-8 py-3.5 text-base font-medium tracking-wide',
+  sm: 'h-[48px] px-6 text-[16px]',
+  md: 'h-[48px] px-8 text-[16px] font-medium tracking-wide',
+  lg: 'h-[48px] px-10 text-[16px] font-medium tracking-wide',
 };
 
 const baseStyles =
-  'inline-flex items-center justify-center gap-2 rounded-xl font-sans transition-all duration-layout ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia focus-visible:ring-offset-2 focus-visible:ring-offset-noir disabled:opacity-50 disabled:pointer-events-none select-none hover:-translate-y-0.5 active:translate-y-0';
+  'inline-flex items-center justify-center gap-3 rounded-xl font-sans transition-all duration-layout ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia focus-visible:ring-offset-2 focus-visible:ring-offset-noir disabled:opacity-50 disabled:pointer-events-none select-none hover:-translate-y-0.5 active:translate-y-0';
 
 export function Button(props: ButtonProps) {
   const { variant = 'primary', size = 'md', className, children, ...rest } = props;

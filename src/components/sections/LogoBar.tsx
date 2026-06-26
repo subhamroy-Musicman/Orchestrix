@@ -22,7 +22,7 @@ export function LogoBar() {
   const marqueeContent = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
 
   return (
-    <section aria-label="Trusted by leading companies" className="relative py-20 md:py-24 lg:py-32 bg-noir overflow-hidden border-t border-expedition/20">
+    <section aria-label="Trusted by leading companies" className="relative py-24 bg-noir overflow-hidden border-t border-expedition/20">
       
       {/* Background gradients for smooth fade from Hero */}
       <div className="absolute inset-0 bg-gradient-to-b from-noir via-transparent to-noir pointer-events-none z-10" />

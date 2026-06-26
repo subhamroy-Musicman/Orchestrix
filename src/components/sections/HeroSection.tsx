@@ -44,7 +44,7 @@ function DashboardVisualization() {
       </svg>
 
       {/* Main Glass Dashboard Shell */}
-      <div className="relative z-10 w-full max-w-xl bg-noir/60 backdrop-blur-2xl border border-white/10 rounded-2xl p-1 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] group transition-all duration-layout hover:border-white/20">
+      <div className="relative z-10 w-full max-w-full lg:max-w-[800px] mx-auto lg:ml-auto lg:mr-0 bg-noir/60 backdrop-blur-2xl border border-white/10 rounded-2xl p-1 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] group transition-all duration-layout hover:border-white/20">
         
         {/* Inner Window Chrome */}
         <div className="bg-noir/40 rounded-xl overflow-hidden border border-white/5">
@@ -139,65 +139,67 @@ function DashboardVisualization() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Floating Card 1 - Transformation Rule */}
-      <div className="absolute top-12 -right-6 lg:-right-20 z-20 animate-float" style={{ animationDelay: '0.5s' }}>
-        <div className="bg-noir/90 backdrop-blur-xl border border-white/10 rounded-xl p-1 shadow-2xl group hover:-translate-y-1.5 transition-transform duration-layout cursor-default">
-          <div className="bg-white/5 rounded-lg p-4 border border-white/5">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-mint/10 flex items-center justify-center text-mint border border-mint/20">
-                <Icon name="cog-8-tooth" size="sm" />
+        {/* Floating Card 1 - Transformation Rule */}
+        <div className="hidden xl:block absolute top-16 -right-12 z-20 animate-float" style={{ animationDelay: '0.5s' }}>
+          <div className="bg-noir/90 backdrop-blur-xl border border-white/10 rounded-xl p-1 shadow-2xl group hover:-translate-y-1.5 transition-transform duration-layout cursor-default">
+            <div className="bg-white/5 rounded-lg p-5 border border-white/5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-mint/10 flex items-center justify-center text-mint border border-mint/20">
+                  <Icon name="cog-8-tooth" size="sm" />
+                </div>
+                <div className="text-sm font-medium text-white">Rule Execution</div>
               </div>
-              <div className="text-sm font-medium text-white">Rule Execution</div>
+              <div className="font-mono text-[10px] text-mint/60 bg-black/30 p-2 rounded border border-white/5">
+                <span className="text-forsythia">const</span> result = <span className="text-mint">await</span> transform(data);<br/>
+                <span className="text-arctic/40">{'// 1.2ms latency'}</span>
+              </div>
             </div>
-            <div className="font-mono text-[10px] text-mint/60 bg-black/30 p-2 rounded border border-white/5">
-              <span className="text-forsythia">const</span> result = <span className="text-mint">await</span> transform(data);<br/>
-              <span className="text-arctic/40">{'// 1.2ms latency'}</span>
+          </div>
+        </div>
+
+        {/* Floating Card 2 - Performance Metric */}
+        <div className="hidden xl:block absolute bottom-8 -left-12 z-20 animate-float" style={{ animationDelay: '2s' }}>
+          <div className="bg-noir/90 backdrop-blur-xl border border-white/10 rounded-xl p-1 shadow-2xl group hover:-translate-y-1.5 transition-transform duration-layout cursor-default">
+            <div className="bg-gradient-to-br from-forsythia/10 to-transparent rounded-lg p-4 lg:p-5 border border-forsythia/20 flex items-center gap-3 lg:gap-4">
+              <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-forsythia/20 flex items-center justify-center text-forsythia shadow-[0_0_15px_rgba(255,200,1,0.2)]">
+                <Icon name="arrow-trending-up" size="sm" />
+              </div>
+              <div>
+                <div className="text-mint/80 text-[10px] lg:text-xs font-medium uppercase tracking-wider mb-0.5">Throughput</div>
+                <div className="text-white font-bold text-lg lg:text-xl font-mono tracking-tight">1,204<span className="text-mint/50 text-xs lg:text-sm">/s</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Card 3 - AI Assistant */}
+        <div className="hidden xl:block absolute -top-6 -right-8 z-30 animate-float" style={{ animationDelay: '1.2s' }}>
+          <div className="bg-noir/90 backdrop-blur-xl border border-white/10 rounded-full p-2 shadow-2xl group hover:-translate-y-1.5 transition-transform duration-layout cursor-default flex items-center gap-4">
+            <div className="relative">
+               <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-expedition to-noir border border-white/10 flex items-center justify-center overflow-hidden shadow-inner">
+                  <Icon name="cube-16-solid" size="sm" className="text-forsythia drop-shadow-md" />
+                  <div className="absolute inset-0 bg-white/20 animate-shimmer" style={{ backgroundSize: '200% 100%' }} />
+               </div>
+               {/* Notification dot */}
+               <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-forsythia rounded-full border-2 border-noir animate-pulse" />
+            </div>
+            <div className="pr-4 py-1">
+               <div className="text-white text-[11px] font-bold flex items-center gap-1.5 leading-tight">
+                  AI Assistant
+               </div>
+               <div className="text-mint/80 text-[10px] mt-0.5 flex items-center gap-1 leading-tight">
+                  <svg className="w-2.5 h-2.5 text-forsythia" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  Workflow optimized
+               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Floating Card 2 - Performance Metric */}
-      <div className="absolute bottom-10 -left-2 lg:-left-6 z-20 animate-float" style={{ animationDelay: '2s' }}>
-        <div className="bg-noir/90 backdrop-blur-xl border border-white/10 rounded-xl p-1 shadow-2xl group hover:-translate-y-1.5 transition-transform duration-layout cursor-default">
-          <div className="bg-gradient-to-br from-forsythia/10 to-transparent rounded-lg p-3 lg:p-4 border border-forsythia/20 flex items-center gap-3 lg:gap-4">
-            <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-forsythia/20 flex items-center justify-center text-forsythia shadow-[0_0_15px_rgba(255,200,1,0.2)]">
-              <Icon name="arrow-trending-up" size="sm" />
-            </div>
-            <div>
-              <div className="text-mint/80 text-[10px] lg:text-xs font-medium uppercase tracking-wider mb-0.5">Throughput</div>
-              <div className="text-white font-bold text-lg lg:text-xl font-mono tracking-tight">1,204<span className="text-mint/50 text-xs lg:text-sm">/s</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Floating Card 3 - AI Assistant */}
-      <div className="absolute top-1/4 -right-2 lg:-right-8 z-30 animate-float" style={{ animationDelay: '1.2s' }}>
-        <div className="bg-noir/90 backdrop-blur-xl border border-white/10 rounded-full p-1.5 shadow-2xl group hover:-translate-y-1.5 transition-transform duration-layout cursor-default flex items-center gap-3">
-          <div className="relative">
-             <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-expedition to-noir border border-white/10 flex items-center justify-center overflow-hidden shadow-inner">
-                <Icon name="cube-16-solid" size="sm" className="text-forsythia drop-shadow-md" />
-                <div className="absolute inset-0 bg-white/20 animate-shimmer" style={{ backgroundSize: '200% 100%' }} />
-             </div>
-             {/* Notification dot */}
-             <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-forsythia rounded-full border-2 border-noir animate-pulse" />
-          </div>
-          <div className="pr-4 py-1">
-             <div className="text-white text-[11px] font-bold flex items-center gap-1.5 leading-tight">
-                AI Assistant
-             </div>
-             <div className="text-mint/80 text-[10px] mt-0.5 flex items-center gap-1 leading-tight">
-                <svg className="w-2.5 h-2.5 text-forsythia" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                Workflow optimized
-             </div>
-          </div>
-        </div>
-      </div>
 
       {/* Ambient background rings */}
       <div className="absolute -inset-16 border border-white/5 rounded-full border-dashed animate-spin-slow pointer-events-none" style={{ animationDuration: '60s' }} />
@@ -211,15 +213,15 @@ export function HeroSection() {
     <section 
       id="hero" 
       aria-labelledby="hero-heading" 
-      className="relative min-h-screen pt-32 pb-20 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 flex items-center overflow-hidden bg-noir selection:bg-forsythia selection:text-noir"
+      className="relative min-h-screen pt-[160px] pb-24 flex items-center overflow-hidden bg-noir selection:bg-forsythia selection:text-noir"
     >
       <GridBackground />
       
       <Container className="relative z-10 pt-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-8 items-center justify-between w-full">
           
           {/* Left Content - Typography & Hierarchy refinement */}
-          <div className="flex flex-col items-start max-w-2xl relative z-20">
+          <div className="flex flex-col items-start max-w-2xl w-full lg:w-1/2 relative z-20">
             <div className="animate-fade-in-up mb-6">
               {/* Premium Badge */}
               <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-xs font-semibold tracking-wide uppercase shadow-[0_2px_10px_rgba(0,0,0,0.2)] mb-8 hover:bg-white/10 hover:border-white/20 transition-colors cursor-default">
@@ -230,7 +232,7 @@ export function HeroSection() {
                 Orchestrix 2.0 is now live
               </div>
               
-              <h1 id="hero-heading" className="text-white font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-[-0.02em]">
+              <h1 id="hero-heading" className="display-heading text-white mb-4">
                 The AI Operating System <br className="hidden sm:block" />
                 <span className="relative inline-block mt-2">
                   <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-white via-mint to-forsythia">
@@ -241,11 +243,11 @@ export function HeroSection() {
               </h1>
             </div>
 
-            <p className="text-mint/80 text-lg md:text-xl leading-relaxed max-w-xl font-medium animate-fade-in-up mb-8" style={{ animationDelay: '100ms' }}>
+            <p className="section-subtitle text-mint/80 font-medium max-w-xl animate-fade-in-up mt-4 mb-8" style={{ animationDelay: '100ms' }}>
               {HERO_CONTENT.subheadline}
             </p>
 
-            <div className="flex flex-col gap-3 w-full sm:w-auto animate-fade-in-up mb-16" style={{ animationDelay: '200ms' }}>
+            <div className="flex flex-col gap-3 w-full sm:w-auto animate-fade-in-up mt-8 mb-16" style={{ animationDelay: '200ms' }}>
               <div className="flex flex-col sm:flex-row items-center gap-5 w-full">
                 <Button variant="primary" size="lg" className="w-full sm:w-auto">
                   {HERO_CONTENT.primaryCta}
@@ -264,7 +266,9 @@ export function HeroSection() {
           </div>
 
           {/* Right Visualization */}
-          <DashboardVisualization />
+          <div className="w-full lg:w-1/2 flex justify-end relative">
+            <DashboardVisualization />
+          </div>
 
         </div>
       </Container>

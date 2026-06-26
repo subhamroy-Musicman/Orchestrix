@@ -18,7 +18,7 @@ export const PRICING_MATRIX: PricingMatrixConfig = {
       name: 'Enterprise',
       baseMonthlyUSD: 199,
       description: 'For large organizations with complex automation needs',
-      badge: 'Best Value',
+      badge: null,
     },
   },
   annualDiscountMultiplier: 0.80,

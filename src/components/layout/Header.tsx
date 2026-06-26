@@ -6,6 +6,7 @@ import { Button } from '../ui/Button';
 import { Icon } from '../ui/Icon';
 import { NAV_LINKS } from '@/lib/content/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { cn } from '@/lib/utils/cn';
 
 export function Header() {
@@ -103,29 +104,33 @@ export function Header() {
       role="banner"
     >
       <Container>
-        <div className="flex items-center justify-between h-14">
+        <div className="flex lg:grid lg:grid-cols-[1fr_auto_1fr] items-center justify-between h-16 w-full">
           {/* Logo */}
+          <div className="flex justify-start">
           <Link 
             href="/" 
             className="flex items-center gap-3 group relative z-[60]" 
             aria-label="Orchestrix Home"
             onClick={() => setIsMenuOpen(false)}
           >
-            <div className="relative flex items-center justify-center w-7 h-7">
-              {/* Outer glowing diamond */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-mint to-forsythia rounded-[4px] rotate-45 blur-sm opacity-50 group-hover:opacity-100 group-hover:rotate-90 group-hover:scale-110 transition-all duration-700" />
-              {/* Inner geometric shape */}
-              <div className="relative w-full h-full bg-gradient-to-tr from-mint to-forsythia rounded-[4px] rotate-45 flex items-center justify-center border border-white/30 group-hover:rotate-90 group-hover:scale-110 transition-all duration-700 shadow-lg">
-                <div className="w-3 h-3 bg-noir/90 rounded-[2px]" />
+            <div className="relative flex items-center justify-center w-9 h-9 rounded-md group-hover:scale-105 transition-all duration-300">
+              {/* Outer Glow */}
+              <div className="absolute inset-0 bg-forsythia/40 blur-md rounded-md group-hover:bg-forsythia/60 group-hover:blur-lg transition-all duration-500 animate-pulse-slow" />
+              
+              {/* Image Container */}
+              <div className="relative w-full h-full rounded-md overflow-hidden border border-white/20 group-hover:border-forsythia/50 transition-colors shadow-lg z-10 bg-noir flex items-center justify-center">
+                <Image src="/logo.png?v=2" alt="Orchestrix Logo" fill className="object-cover scale-[1.25]" unoptimized />
               </div>
             </div>
             <span className="font-sans font-bold text-xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-arctic/80 group-hover:to-arctic transition-colors">
               Orchestrix
             </span>
           </Link>
+          </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-1.5" aria-label="Primary navigation">
+          <div className="hidden lg:flex justify-center">
+            <nav className="flex items-center gap-1 xl:gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-2 py-1.5" aria-label="Primary navigation">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -133,7 +138,7 @@ export function Header() {
                   key={link.label}
                   href={link.href}
                   className={cn(
-                    "text-sm font-medium transition-all duration-layout relative px-4 py-1.5 rounded-full",
+                    "text-[14px] xl:text-[15px] font-medium transition-all duration-layout relative px-4 xl:px-5 py-2 rounded-full whitespace-nowrap",
                     isActive 
                       ? "text-forsythia bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]" 
                       : "text-mint/90 hover:text-white hover:bg-white/5"
@@ -144,11 +149,12 @@ export function Header() {
                 </Link>
               );
             })}
-          </nav>
+            </nav>
+          </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm" className="text-mint hover:text-white">
+          <div className="hidden lg:flex justify-end items-center gap-4">
+            <Button variant="ghost" size="md" className="text-mint hover:text-white font-medium">
               Log In
             </Button>
             <Button 
@@ -162,21 +168,23 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden relative z-[60] p-2 text-mint hover:text-forsythia transition-colors rounded-lg hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-forsythia"
+          <div className="lg:hidden flex justify-end">
+            <button
+              className="relative z-[60] p-2 text-mint hover:text-forsythia transition-colors rounded-lg hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-forsythia"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            <Icon name={isMenuOpen ? "x-mark" : "search"} size="lg" decorative={true} />
-          </button>
+              <Icon name={isMenuOpen ? "x-mark" : "search"} size="lg" decorative={true} />
+            </button>
+          </div>
         </div>
       </Container>
 
       {/* Mobile Menu Overlay */}
       <div 
         className={cn(
-          "fixed inset-0 bg-noir/95 backdrop-blur-xl z-50 md:hidden transition-all duration-layout flex flex-col",
+          "fixed inset-0 bg-noir/95 backdrop-blur-xl z-50 lg:hidden transition-all duration-layout flex flex-col",
           isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
         )}
         role="dialog"
